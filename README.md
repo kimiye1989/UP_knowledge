@@ -1,15 +1,17 @@
-# Urban Planning Knowledge Network Analytical Toolbox (UPKNAT) 
-
-# Instructions
-This repo comprises analytical methods to analysing frequences of keywords and word pairs, and keywords networks. The aim is to ....
-(to be continued...). The code present in this repo may . Please 
+# UPKNAT
+Urban Planning Knowledge Network Analytical Toolbox (UPKNAT) is a comprehensive analytical toolbox for analysing the keywords trend in urban planning. Despite the principal focus is on bibliographies of discipline of urban planning, it can be applied to any other disciplines given specific numbers of structured data of relevant literature, namely Titles, Abstracts and Keywords. This work is part of the research project of, under going in the [WUS Lab](https://github.com/huawei-noah/xingtian/), supervised by Prof.Dr.WU Zhiqiang.
 
 # Methods
-### 2-1 Words Analysis
+### (A) Natural Langurahe Processing
 We have devised several easy-to-hands on frequence calculating methods 
 
+### (B) Keyword Frequence Analysis
+The following Equation is applied to calculate the frequences of specific keywords per year.
+
+$\pi$
 
 # Data
+Currently, this repo contains a set of bibliography samples, which encompasus 100 pieces of studies with , for you to download in a free manner. You could
 
 # Citing for Publications
 If you use UPKNAT in your research, please cite the [paper](https://arxiv.org/abs/2010.09776) by using the following BibTeX format:
