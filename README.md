@@ -1,5 +1,5 @@
 # UPKNAT
-Urban Planning Knowledge Network Analytical Toolbox (UPKNAT) is a comprehensive analytical toolbox for analysing the keywords trend in urban planning. Despite the principal focus is on bibliographies of discipline of urban planning, it can be applied to any other disciplines given specific numbers of structured data of relevant literature, namely Titles, Abstracts and Keywords. This work is part of the research project of, under going in the [WUS Lab](https://github.com/huawei-noah/xingtian/), supervised by Prof.Dr.WU Zhiqiang.
+Urban Planning Knowledge Network Analytical Toolbox (UPKNAT) is a comprehensive analytical toolbox for analysing the keywords trend in urban planning. Despite the principal focus is on bibliographies of discipline of urban planning, it can be applied to any other disciplines given specific numbers of structured data of relevant literature, namely Titles, Abstracts and Keywords. This work is part of the research project of, under going in the [WUS Lab](https://github.com/huawei-noah/xingtian/), supervised by [Prof.Dr.WU Zhiqiang](https://github.com/huawei-noah/xingtian/).
 
 # Methods
 ### (A) Natural Langurahe Processing

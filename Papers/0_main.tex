@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper]{report}
+%\usepackage[utf8]{inputenc}
+
+%%For review within group
+%\usepackage[top=0.25in,bottom=0.25in,right=2in,left=0.1in]{geometry}
+%\renewcommand{\baselinestretch}{2}
+
+%%For Report Proper
+\usepackage[top=1in,bottom=0.65in,right=0.625in,left=0.625in]{geometry}
+\renewcommand{\baselinestretch}{1.3}
+
+\usepackage{array}
+\usepackage{todonotes}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+\usepackage{color,soul}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=blue
+}
+
+
+\usepackage{fancyhdr}
+\usepackage{makecell}
+\usepackage{natbib}
+\usepackage{subfig, graphicx}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{rotating}
+\usepackage{hyperref}
+\usepackage{acronym}
+\usepackage{longtable,booktabs}
+\usepackage{multirow}
+\usepackage{soul}
+\usepackage[toc,page]{appendix}
+\usepackage{colortbl}
+\usepackage{lscape}
+\usepackage{bbding}
+\usepackage{scalerel}
+\usepackage{amsthm}
+\usepackage{amsopn}
+\usepackage{newlfont}
+\usepackage{mathtools,array}
+\usepackage{colortbl}
+\usepackage{amsmath,amsfonts}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{xcolor}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\note}[1]{\textcolor{red}{ (NOTE: #1) }}
+\newcommand{\todoWHAT}{\todo{what do you mean here? please rewrite}}
+\definecolor{myoffwhite}{HTML}{F1F1F1}
+\definecolor{mydarkpink}{HTML}{E23E99}
+\definecolor{mypurple}{HTML}{99017B}
+\definecolor{mypink2}{HTML}{F769A1}
+\definecolor{mylightpink}{HTML}{F994B1}
+
+\usepackage{wasysym}
+
+\usepackage{pifont}
+\newcommand{\tic}{\ding{51}}
+
+\newcommand{\RomanNumeralCaps}[1]{\MakeUppercase{\romannumeral #1}}
+\DeclareMathOperator*{\Expect}{\mathbb{E}}
+\DeclareMathOperator*{\argmaxA}{arg\,max}
+\DeclareMathOperator*{\argminA}{arg\,min}
+\DeclareMathOperator*{\maxA}{max}
+\DeclareMathOperator*{\minA}{min}
+\DeclareMathOperator*{\EA}{\mathbb{E}}
+
+\usepackage{mathtools,tikz,caption}
+\DeclareRobustCommand\sampleline[1]{%
+  \tikz\draw[#1] (0,0) (0,\the\dimexpr\fontdimen22\textfont2\relax)
+  -- (2em,\the\dimexpr\fontdimen22\textfont2\relax);%
+}
+
+\begin{document}
+
+\include{1_presentation}
+
+\bibliography{ref}
+\bibliographystyle{unsrt}
+
+\end{document}
