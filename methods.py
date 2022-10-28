@@ -130,7 +130,7 @@ def Plot_Whole_Year_Barchart(file_dir, display_threshold_all_years):
     ax1.set_ylabel("Accumulative Occurences", fontsize=15, labelpad=12)
     ax2.set_ylabel("Percentile Occurences", fontsize=15, labelpad=12)
 
-    ax1.set_title('Frequences of Top %d Keywords of Year Spectrum (1923-1974)'%display_threshold_all_years, fontsize=18, y=1.06)
+    ax1.set_title('Frequencies of Top %d Keywords of Year Spectrum (1923-1990)'%display_threshold_all_years, fontsize=18, y=1.06)
 
     plt.legend(loc='upper right', fontsize=16, ncol=1)
 
