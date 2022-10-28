@@ -2,7 +2,7 @@ import math
 import random
 import json
 
-from functions import read_json
+from functions import read_json, Write_to_json
 
 
 def Single_keyword_Sort_Filter_By_Year(file_dir, display_threshold):
@@ -54,8 +54,16 @@ def Add_to_tabu_json(word, json_file):
     d = read_json(json_file)
     # Adding tabu words to the dictionary (list)
     dic = d['Tabu']
-    dic.append(word)
-    d.update({'Tabu':dic})
+
+    if word in d['Tabu']:
+        print("The word %s already exists"%word)
+
+    else:
+        dic.append(word)
+        d.update({'Tabu':dic})
+        print("Succeed! The new word '%s' has been add to excluding list"%word)
+
+    Write_to_json(json_file, d)
 
 
 def Add_to_replace_json(word, main_word, json_file):
@@ -67,8 +75,15 @@ def Add_to_replace_json(word, main_word, json_file):
         exis_lis = replace_dic[main_word]
         exis_lis.append(word)
         replace_dic.update({main_word:exis_lis})
+        print("Succefully added %s to existing mainword '%s'"%(word, main_word))
     
     # Create new mainword
     else:
         replace_dic.update({main_word:[word]})
+        print("Succefully created %s as a new mainwords and newly added '%s'"%(main_word, word))
+
     d.update({'Replacement':replace_dic})
+
+    Write_to_json(json_file, d)
+
+    
