@@ -7,17 +7,20 @@ import matplotlib.ticker as mtick
 
 from functions import read_json, Write_to_json
 
-def Single_keyword_Sort_Filter_By_Year(file_dir, display_threshold):
+def Single_keyword_By_Year(file_dir, display_threshold):
     new_dic = {}
+    count_dic = {}
     kw = read_json(file_dir)
 
     for yr, w_dic in zip(kw.keys(), kw.values()):
         # Descendingly sort the single keyword dictionary per year by their frequences, Pick top 20 to form a new dictionary
         sorted_w_dic = {k: v for k, v in sorted(w_dic.items(), key=lambda item: item[1], reverse = True)[:int(display_threshold)]}
+        sum_count = sum(w_dic.values())
 
         new_dic.update({yr:sorted_w_dic})
+        count_dic.update({yr:sum_count})
         # Output the top %threshould keywords by year
-    return new_dic
+    return new_dic, count_dic
 
 def Single_keyword_All_Year(file_dir):
     # replace all keywords with accumulative counts in a shared dictionary whatever years
