@@ -141,3 +141,54 @@ def Plot_Whole_Year_Barchart(file_dir, display_threshold_all_years):
 
     plt.savefig('./Outputs/All_year_single_word_frequencies.png', dpi=300, bbox_inches='tight')
     plt.show()
+
+def Plot_Single_Year_Barchart(file_dir, display_threshold_per_year):
+
+    dic_yr, original_occur_dic = Single_keyword_By_Year(file_dir, display_threshold_per_year)
+    years_lis = dic_yr.keys()
+
+    for yr in years_lis:
+        whole_dic = dic_yr[yr]
+        original_occur = int(original_occur_dic[yr])
+
+        X_lis = whole_dic.keys()
+        Y_lis_temp = whole_dic.values()
+
+        # Make sure every accum num is a positive integer
+        Y_lis = [int(max(y,0)) for y in Y_lis_temp]
+
+        Y_pesudo = [y/sum(Y_lis) for y in Y_lis_temp]
+        Y_perc_lis = [y/int(original_occur) for y in Y_lis]
+
+        fig = plt.figure(figsize=(8,5))
+        ax1 = fig.add_axes([0, 0, 1, 1])
+        ax2 = ax1.twinx()
+        ax1.set(facecolor = "whitesmoke")
+        ax1.grid(axis='both', color='lightgray')
+
+        ax1.bar(X_lis, Y_lis, align='center', color='gray', label='Cumulative Occurences', alpha = 0.8)
+        ax2.plot(X_lis, Y_pesudo, linewidth=2, color='blue', label='Percentiles (to Top %d Keywords)'%display_threshold_per_year) 
+        ax2.plot(X_lis, Y_perc_lis, linewidth=2, color='red', label='Percentiles (to All Keywords)')
+
+        ax2.scatter(X_lis, Y_pesudo, s=15, color='k')
+        ax2.scatter(X_lis, Y_perc_lis, s=15, color='k')
+
+        #ax2.axvline(x=9, c='k', lw=1.5, linestyle='dashed', alpha = 0.6, label='Per 10 Keywords')
+        #ax1.annotate(10, max(Y_lis), (10, max(Y_lis)), c='k', fontsize = 12)
+        
+        ax1.text(-1, max(Y_lis)+0.5, str(max(Y_lis)), horizontalalignment='center', color = 'k',verticalalignment='center', fontsize = 16)
+        ax2.text(-1, max(Y_pesudo), "{0:.00%}".format(max(Y_pesudo)), horizontalalignment='center', color = 'blue',verticalalignment='center',fontsize = 16)
+        ax2.text(-1, max(Y_perc_lis), "{0:.00%}".format(max(Y_perc_lis)), horizontalalignment='center', color = 'red', verticalalignment='center',fontsize = 16)
+        
+        ax1.set_xlabel('Keywords', fontsize=22)
+        ax1.set_xticklabels(X_lis, rotation=90)
+        ax2.yaxis.set_major_formatter(mtick.PercentFormatter(xmax=1, decimals=None, symbol='%', is_latex=False))
+
+        ax1.set_ylabel("Accumulative Occurences", fontsize=15, labelpad=12)
+        ax2.set_ylabel("Percentile Occurences", fontsize=15, labelpad=12)
+
+        ax1.set_title('Frequencies of Top %d Keywords of Year %s'%(display_threshold_per_year, yr), fontsize=18, y=1.06)
+
+        plt.legend(loc='upper right', fontsize=16, ncol=1)
+        plt.tight_layout()
+        plt.savefig('./Outputs/Per_Year/%s_Single_word_frequencies.png'%yr, dpi=90, bbox_inches='tight')
