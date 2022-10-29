@@ -1,13 +1,12 @@
 {
     "Tabu": [
         "pdf pdf",
-        "problem"
+        "problem",
+        "the"
     ],
     "Replacement": {
         "urban planning": [
-            "city planning",
-            "town planning",
-            "town planning"
+            "city planning"
         ]
     }
 }

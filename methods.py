@@ -2,10 +2,15 @@ import math
 import random
 import json
 
+#!pip install --user graphistry
+import graphistry
+import networkx as nx
+
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
 from functions import read_json, Write_to_json
+
 
 def Single_keyword_By_Year(file_dir, display_threshold):
     new_dic = {}
@@ -192,3 +197,39 @@ def Plot_Single_Year_Barchart(file_dir, display_threshold_per_year):
         plt.legend(loc='upper right', fontsize=16, ncol=1)
         plt.tight_layout()
         plt.savefig('./Outputs/Per_Year/%s_Single_word_frequencies.png'%yr, dpi=90, bbox_inches='tight')
+
+def Purge_Co_Count(purged_file, co_word_freq_json):
+    d = read_json(co_word_freq_json)
+    full_records = {}
+    for yr, eve_dic in zip(d.keys(),d.values()):
+
+        for pair, num in zip(eve_dic.keys(), eve_dic.values()):
+            if int(num) != 0:
+
+                if pair not in full_records:
+                    full_records.update({pair:int(num)})
+                else:
+                    old_count = full_records[pair]
+                    new_count = old_count + int(num)
+                    full_records.update({pair:int(new_count)})
+    
+    Write_to_json(purged_file, full_records)
+    return full_records
+
+def Establish_All_Year_Network(purged_file, co_word_freq_json):
+    graph = nx.Graph()
+    pure_words = Purge_Co_Count(purged_file, co_word_freq_json)
+
+    for paris, count in zip(pure_words.keys(), pure_words.values()):
+        node1 = paris.split("-")[0]
+        node2 = paris.split("-")[1]
+
+        graph.add_edge(node1, node2, weight=1/int(count))
+
+        #nx.draw(graph, with_labels=True)
+    return graph
+
+def Plot_Network_via_graphistry(graph):
+    graphistry.register(api=3, username='qimingye', password='yqm323232') 
+    g = graphistry.bind(source='src', destination='dst', node='nodeid')
+    g.plot(graph)
